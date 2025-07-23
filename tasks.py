@@ -1,6 +1,5 @@
 # task 1
 
-
 def max_count_numbers(array: list[int]) -> int:
 
     if not isinstance(array, list):  raise TypeError
@@ -34,3 +33,15 @@ def max_count_numbers(array: list[int]) -> int:
             min_elem = elem
   
     return min_elem
+
+# task 2
+
+
+def find_elems_equal_target(array: list[int], target: int) -> list:
+
+    if not isinstance(array, list):  raise TypeError
+
+    for i in range(len(array)):
+        for j in range(len(array)):
+            if array[i] + array[j] == target and i != j:
+                return [i, j]
