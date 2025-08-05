@@ -1,3 +1,4 @@
+import time
 
 
 def max_in_range(arr:list, start:int, end:int):
@@ -13,6 +14,8 @@ def max_in_range(arr:list, start:int, end:int):
     if end > length - 1:
         end = length-1
 
+    run = time.time()
+
     max = arr[start]
     indexes = []
     for i in range(start+1, end, 1):
@@ -20,6 +23,8 @@ def max_in_range(arr:list, start:int, end:int):
             max = arr[i]
             indexes.append(i)
 
+    print(time.time()-run)
+    # O(n^2)
     return max, indexes[len(indexes)-1], indexes[len(indexes)-1] + start
 
 def rotate_and_reverse(arr:list, k:int):
@@ -31,6 +36,8 @@ def rotate_and_reverse(arr:list, k:int):
 
     if k > length:
         k -= length
+
+    run = time.time()
 
     array = []
     for i in range(k,0,-1):
@@ -45,4 +52,9 @@ def rotate_and_reverse(arr:list, k:int):
     for i in range(length//2):
         array[i], array[length-i-1] = array[length-i-1], array[i]
 
+    print(time.time() - run)
+    # O(n)
     return array
+
+max_in_range([1,2,3,4,5,6], 1, 4)
+rotate_and_reverse([1,2,3,4,5,6], 2)
