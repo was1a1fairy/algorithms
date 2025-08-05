@@ -1,4 +1,8 @@
+
+
 def max_in_range(arr:list, start:int, end:int):
+
+    length = len(arr)
 
     assert isinstance(arr, list), "array must be list!"
     assert isinstance(start, int), "start must be int("
@@ -6,8 +10,8 @@ def max_in_range(arr:list, start:int, end:int):
 
     if start < 0:
         start = 0
-    if end > len(arr) - 1:
-        end = len(arr)-1
+    if end > length - 1:
+        end = length-1
 
     max = arr[start]
     indexes = []
@@ -20,17 +24,25 @@ def max_in_range(arr:list, start:int, end:int):
 
 def rotate_and_reverse(arr:list, k:int):
 
+    length = len(arr)
+
+    assert isinstance(arr, list), "arr must be list!!"
+    assert isinstance(k, int), "k must be int"
+
+    if k > length:
+        k -= length
+
     array = []
     for i in range(k,0,-1):
-        array.append(arr[len(arr)-i])
+        array.append(arr[length-i])
 
-    for i in range(0,len(arr),1):
-        arr[len(arr)-1-i] = arr[len(arr)-1-i-k]
+    for i in range(0,length,1):
+        arr[length-1-i] = arr[length-1-i-k]
 
     for i in arr[k::]:
         array.append(i)
 
-    for i in range(len(array)//2):
-        array[i], array[len(array)-i-1] = array[len(array)-i-1], array[i]
+    for i in range(length//2):
+        array[i], array[length-i-1] = array[length-i-1], array[i]
 
     return array
