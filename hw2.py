@@ -17,3 +17,20 @@ def max_in_range(arr:list, start:int, end:int):
             indexes.append(i)
 
     return max, indexes[len(indexes)-1], indexes[len(indexes)-1] + start
+
+def rotate_and_reverse(arr:list, k:int):
+
+    array = []
+    for i in range(k,0,-1):
+        array.append(arr[len(arr)-i])
+
+    for i in range(0,len(arr),1):
+        arr[len(arr)-1-i] = arr[len(arr)-1-i-k]
+
+    for i in arr[k::]:
+        array.append(i)
+
+    for i in range(len(array)//2):
+        array[i], array[len(array)-i-1] = array[len(array)-i-1], array[i]
+
+    return array
