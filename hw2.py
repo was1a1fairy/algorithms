@@ -26,16 +26,17 @@ def max_in_range(arr:list, start:int, end:int):
     print(time.time()-run)
     # O(n^2)
     return max, indexes[len(indexes)-1], indexes[len(indexes)-1]+start
-print(max_in_range([1,2,3,4,5,6], 2, 4))
+
+
 def rotate_and_reverse(arr:list, k:int):
 
     length = len(arr)
 
-    assert isinstance(arr, list), "arr must be list!!"
-    assert isinstance(k, int), "k must be int"
+    if not isinstance(arr, list):  raise TypeError
+    if not isinstance(k, int):  raise TypeError
 
     if k > length:
-        k -= length
+        k %= length
 
     run = time.time()
 
@@ -55,6 +56,3 @@ def rotate_and_reverse(arr:list, k:int):
     print(time.time() - run)
     # O(n)
     return array
-#
-# max_in_range([1,2,3,4,5,6], 1, 4)
-# rotate_and_reverse([1,2,3,4,5,6], 2)
