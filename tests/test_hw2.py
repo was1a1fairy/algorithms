@@ -57,3 +57,19 @@ def tests_reverse_even_elems(arr, expected):
 def tests_negative_reverse_even():
     pass
 
+@pytest.mark.parametrize(
+    "arr, expected",
+    [[[1,2,3,4], [1,2,3,5]],
+     [[1,0,0,0], [1,0,0,1]],
+     [[9,9], [1,0,0]],
+     [[9], [1,0]],
+     [[9,0,0,0,3], [9,0,0,0,4]],
+     [[9,0,0,9], [9,0,1,0]]
+     ]
+)
+
+def tests_add_1_to_integer(arr, expected):
+    assert add_1_to_integer(arr) == expected
+
+def tests_negative_add_1():
+    pass
