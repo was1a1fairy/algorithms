@@ -55,7 +55,8 @@ def tests_reverse_even_elems(arr, expected):
     assert reverse_even_elements(arr) == expected
 
 def tests_negative_reverse_even():
-    pass
+    with pytest.raises(TypeError):
+        reverse_even_elements("123")
 
 @pytest.mark.parametrize(
     "arr, expected",
@@ -72,4 +73,5 @@ def tests_add_1_to_integer(arr, expected):
     assert add_1_to_integer(arr) == expected
 
 def tests_negative_add_1():
-    pass
+    with pytest.raises(TypeError):
+        add_1_to_integer("123")
