@@ -39,3 +39,21 @@ def test_negative_rotate_and_reverse():
         rotate_and_reverse("123", 5)
         rotate_and_reverse([1], "k")
 
+@pytest.mark.parametrize(
+    "arr, expected",
+    [[[2,4,6,8], [8,6,4,2]],
+     [[1,3,5,7], [1,3,5,7]],
+     [[1,2,3,4,5], [1,4,3,2,5]],
+     [[2,3,4,5,6], [6,3,4,5,2]],
+     [[1,1,1,2,4,1,1,1], [1,1,1,4,2,1,1,1]],
+     [[2,3,4,2], [2,3,4,2]],
+     [[1,2,4,5], [1,4,2,5]]
+     ]
+)
+
+def tests_reverse_even_elems(arr, expected):
+    assert reverse_even_elements(arr) == expected
+
+def tests_negative_reverse_even():
+    pass
+
