@@ -83,6 +83,11 @@ def add_1_to_integer(arr:list[int]) ->list:
 
     if not isinstance(arr, list):  raise TypeError
 
-    arr[len(arr)-1] = arr[len(arr)-1] + 1
-
-    return arr
+    for i in range(len(arr)-1,-1,-1):
+        if arr[i] + 1 == 10:
+            arr[i] = 0
+        else:
+            arr[i] += 1
+            return arr
+    return [1] + arr
+    # O(n)

@@ -38,3 +38,4 @@ def test_negative_rotate_and_reverse():
     with pytest.raises(TypeError):
         rotate_and_reverse("123", 5)
         rotate_and_reverse([1], "k")
+
