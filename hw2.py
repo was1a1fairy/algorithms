@@ -56,3 +56,22 @@ def rotate_and_reverse(arr:list, k:int):
     print(time.time() - run)
     # O(n)
     return array
+
+def reverse_even_elements(arr:list[int]) -> list:
+
+    start = 0
+    end = 0
+    list_even = [elem for elem in arr if elem%2==0]
+    length = len(arr)
+
+    for i in range(len(list_even)//2):
+        while arr[i+start] % 2 != 0:
+            start +=1
+        while arr[length-1-i-end] % 2 != 0:
+            end += 1
+        if i + start == length-1-i-end:
+            return arr
+        arr[i+start], arr[length-1-i-end] = arr[length-1-i-end], arr[i+start]
+
+    # O(n^2)
+    return arr
