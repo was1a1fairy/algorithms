@@ -59,6 +59,8 @@ def rotate_and_reverse(arr:list, k:int):
 
 def reverse_even_elements(arr:list[int]) -> list:
 
+    if not isinstance(arr, list):  raise TypeError
+
     start = 0
     end = 0
     list_even = [elem for elem in arr if elem%2==0]
@@ -74,4 +76,13 @@ def reverse_even_elements(arr:list[int]) -> list:
         arr[i+start], arr[length-1-i-end] = arr[length-1-i-end], arr[i+start]
 
     # O(n^2)
+    return arr
+
+
+def add_1_to_integer(arr:list[int]) ->list:
+
+    if not isinstance(arr, list):  raise TypeError
+
+    arr[len(arr)-1] = arr[len(arr)-1] + 1
+
     return arr
