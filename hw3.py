@@ -1,4 +1,4 @@
-def bubble_sort(arr, key=lambda obg: obg, order_by=lambda x,y: x>y):
+def bubble_sort(arr, key=lambda obg: obg, order_by=lambda x,y: x<y):
 
     assert isinstance(arr, list), TypeError
 
