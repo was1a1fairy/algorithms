@@ -9,3 +9,20 @@ def bubble_sort(arr, key=lambda obg: obg, order_by=lambda x,y: x>y):
                 arr[j], arr[j+1] = arr[j+1], arr[j]
 
     return arr
+
+def selection_sort(arr:list, key=lambda obj:obj, order_by=lambda x, y: x > y):
+
+    assert isinstance(arr, list), TypeError
+
+    length = len(arr)
+    for i in range(length):
+        itarget = i
+
+        for j in range(i+1, length):
+
+            if order_by(key(arr[j]),key(arr[itarget])):
+                itarget = j
+
+        arr[i], arr[itarget] = arr[itarget], arr[i]
+
+    return arr
