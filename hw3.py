@@ -37,4 +37,18 @@ def recursive_sum(array:list):
     if len(array) == 1:
         return array[0]
 
+    if len(array) == 0:
+        return 0
+
     return array[len(array)-1] + recursive_sum(array[:len(array)-1:])
+
+def recursive_max(array:list, n: int):
+
+    if n == 0:
+        return array[0]
+
+    elem = recursive_max(array, n-1)
+    if array[n] < elem:
+        return elem
+
+    return array[n]
