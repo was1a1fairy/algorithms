@@ -31,3 +31,10 @@ def selection_sort(arr:list, key=lambda obj:obj, order_by=lambda x, y: x > y):
         arr[i], arr[itarget] = arr[itarget], arr[i]
         swap += 1
     return arr, swap, c
+
+def recursive_sum(array:list):
+
+    if len(array) == 1:
+        return array[0]
+
+    return array[len(array)-1] + recursive_sum(array[:len(array)-1:])
