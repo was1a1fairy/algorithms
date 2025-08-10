@@ -52,3 +52,7 @@ def recursive_max(array:list, n: int):
         return elem
 
     return array[n]
+
+def recursive_sum_even(array:list, n:int)->int:
+
+    return array[n] + recursive_sum_even(array, n-1) if array[n]%2==0 else 0
