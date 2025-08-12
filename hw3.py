@@ -86,3 +86,11 @@ def recursive_fibonacci(n:int):
         return 1
 
     return recursive_fibonacci(n-1) + recursive_fibonacci(n-2)
+
+
+def recursive_sum_of_digits(integer):
+
+    if integer == 0:
+        return 0
+    
+    return integer%10 + recursive_sum_of_digits(integer//10)
