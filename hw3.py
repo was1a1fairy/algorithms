@@ -55,4 +55,34 @@ def recursive_max(array:list, n: int):
 
 def recursive_sum_even(array:list, n:int)->int:
 
+    if n<=0:
+        return array[n]
+        
     return array[n] + recursive_sum_even(array, n-1) if array[n]%2==0 else 0
+
+
+def recursive_reverse_string(string:str):
+
+    if len(string)<=1:
+        return string
+
+    return string[len(string) - 1] + recursive_reverse_string(string[:len(string) - 1])
+    
+def recursive_is_palindrome(string:str, i, length):
+# i = len(string)//2
+
+    if i<=0:
+        return True
+    if string[i-1]!=string[length-i]:
+        return False
+
+    return recursive_is_palindrome(string, i-1, length)
+
+def recursive_fibonacci(n:int):
+
+    if n<=0:
+        return 0
+    if n<=2:
+        return 1
+
+    return recursive_fibonacci(n-1) + recursive_fibonacci(n-2)
