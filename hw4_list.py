@@ -67,3 +67,9 @@ class List:
 
         self.__count -= 1
         self.__memory[self.__count] = None
+
+
+    def is_empty(self):
+        return self.__count == 0
+
+
