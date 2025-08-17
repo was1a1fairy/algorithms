@@ -28,6 +28,7 @@ class List:
         self.__memory[self.__count] = elem
         self.__count += 1
 
+
     def remove(self, elem):
 
         itarget = -1
@@ -47,6 +48,8 @@ class List:
 
     def insert(self, index, elem):
 
+        assert index < self.__count or index > 0, ValueError
+
         if self.__size == self.__count:
             self.__memory = realloc(self.__memory, self.__size)
 
@@ -54,3 +57,13 @@ class List:
             self.__memory[i] = self.__memory[i-1]
 
         self.__memory[index] = elem
+
+    def pop(self, index):
+
+        assert index < self.__count or index > 0, ValueError
+
+        for i in range(index, self.__count-1, 1):
+            self.__memory[i] = self.__memory[i+1]
+
+        self.__count -= 1
+        self.__memory[self.__count] = None
