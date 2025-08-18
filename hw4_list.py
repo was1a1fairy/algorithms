@@ -75,3 +75,11 @@ class List:
 
     def clear(self):
         self.__memory = malloc(4)
+
+    def find(self, elem):
+
+        for i in range(self.__count):
+            if self.__memory[i] == elem:
+                return i
+
+        return -1
