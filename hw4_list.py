@@ -73,3 +73,5 @@ class List:
         return self.__count == 0
 
 
+    def clear(self):
+        self.__memory = malloc(4)
