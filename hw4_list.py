@@ -84,7 +84,7 @@ class List:
 
         return -1
 
-    def count(self, elem):
+    def count_elem(self, elem):
 
         c = 0
         for i in range(self.__count):
@@ -92,3 +92,14 @@ class List:
                 c += 1
 
         return c
+
+    def __get_count(self):
+
+        return self.__count
+
+    def __get_memory(self):
+
+        return self.__memory
+
+    count = property(__get_count)
+    memory = property(__get_memory)
