@@ -83,3 +83,12 @@ class List:
                 return i
 
         return -1
+
+    def count(self, elem):
+
+        c = 0
+        for i in range(self.__count):
+            if self.__memory[i] == elem:
+                c += 1
+
+        return c
