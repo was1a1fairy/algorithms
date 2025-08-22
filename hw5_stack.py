@@ -11,7 +11,7 @@ class Stack:
 
     def __init__(self):
         self.__top = None
-        self.__size = 0
+        self.__count = 0
 
 
     def push(self, data):
@@ -26,9 +26,10 @@ class Stack:
             self.__top = node
 
         else:
-            self.__top, node.ref = node, self.__top
+            self.__top = node
+            node.ref = self.__top
 
-        self.__size += 1
+        self.__count += 1
 
 
     def peek(self):
@@ -36,7 +37,10 @@ class Stack:
         возвращает верхний элемент
         :return: None or элемент на верхушке стека
         """
-        return self.__top
+        if self.is_empty():
+            return None
+
+        return self.__top.data
 
 
     def pop(self):
@@ -44,44 +48,29 @@ class Stack:
         возвращает верхний элемент, удаляя его из стека
         :return: ValueError or верхний элемент
         """
-
-        assert not self.is_empty, ValueError("стек пуст, сначала добавьте элемент с помощью push")
+        if self.is_empty():
+            return None
 
         elem = self.__top.data
         self.__top = self.__top.ref
-        self.__size -= 1
+        self.__count-= 1
 
         return elem
 
 
     def is_empty(self):
 
-        return self.__size == 0
+        return self.__count == 0
 
 
     def clear(self):
 
         self.__top = None
-        self.__size = 0
+        self.__count = 0
 
 
-    def count(self, elem):
-        """
-        ищет количество вхождений элемента в стек
-        :return: int or 0
-        """
-        iter = self.__top
-        c = 0
-
-        for i in range(self.__size):
-            if iter.data == elem:
-                c += 1
-                iter = iter.ref
-
-        return c
-
-    def __get_size(self):
-        return self.__size
+    def __get_count(self):
+        return self.__count
 
 
-    size = property(__get_size)
+    size = property(__get_count)
