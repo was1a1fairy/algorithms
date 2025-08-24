@@ -1,3 +1,4 @@
+# 3 очередь
 
 class PrintDocument:
 
@@ -82,3 +83,127 @@ queue = PrintQueue()
 queue.enqueue(doc1)
 queue.enqueue(doc1)
 print(queue.dequeue())
+
+
+
+# 1
+
+
+class PersonCard:
+
+    def __init__(self, name: str, age: int, occupation:str):
+        self.__name = name
+        self.__age = age
+        self.__occupation = occupation
+
+
+class Node:
+
+    def __init__(self, data:PersonCard, next=None):
+        self.data = data
+        self.next = next
+
+
+class PersonList:
+
+
+    def __init__(self):
+        self.__count = 0
+        self.__head = None
+
+
+    def is_empty(self):
+        return self.__count == 0
+
+
+    def add_person(self, person:PersonCard):
+        """
+        добавляет карточку в начало списка
+        """
+        if self.is_empty():
+            node = Node(person, None)
+        else:
+            node = Node(person, self.__head)
+        self.__head = node
+        self.__count += 1
+
+
+    def append_person(self, person: PersonCard):
+        """
+        добавляет новую карточку в конец списка
+        """
+        node = Node(person, None)
+
+        iterator = self.__head
+        while iterator is not None:
+            iterator = iterator.next
+
+        iterator.next = node
+        self.__count += 1
+
+
+    def insert_person_at(self, index:int, person:PersonCard):
+        """
+        добавляет новую карточку по индексу
+        индекс от 0 до self.count -1
+        """
+        if not isinstance(index, int):  raise TypeError
+        if index >= self.__count or index <= 0:  raise ValueError
+
+        iter = self.__head
+        for i in range(index-1):
+            iter = iter.next
+
+        node = Node(person, iter.next)
+        iter.next = node
+
+
+    def remove_first_person(self):
+        """
+        удаляет карточку из головы(переназначает self.head)
+        """
+
+        if self.is_empty():
+            return None
+
+        node = self.__head
+
+        if self.__count == 1:
+            return node
+
+        self.__head = self.__head.next
+        self.__count -= 1
+        return node
+
+
+    def remove_last_person(self):
+        """
+        удаляет последнюю добавленную карточку
+        """
+        iter = self.__head
+        while iter.next.next is not None:
+            iter = iter.next
+        node = iter
+        iter = None
+        return node
+
+
+    def remove_person(self, person: PersonCard):
+        """
+        удаляет карточки, соответствующие переданному значению
+        """
+        iter = self.__head
+        while iter.next is not None:
+            if iter.next.person == person:
+                iter.next = iter.next.next
+                self.__count -= 1
+            iter = iter.next
+
+
+    def clear_all(self):
+        self.__count = 0
+        self.__head = None
+
+
+    def total_people(self):
+        return self.__count
