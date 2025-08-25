@@ -96,6 +96,8 @@ class PersonCard:
         self.__age = age
         self.__occupation = occupation
 
+    def __str__(self):
+        return f"{self.__name}, {self.__age}, {self.__occupation}"
 
 class Node:
 
@@ -134,11 +136,14 @@ class PersonList:
         """
         node = Node(person, None)
 
-        iterator = self.__head
-        while iterator is not None:
-            iterator = iterator.next
+        if self.is_empty():
+            self.__head = node
+        else:
+            iterator = self.__head
+            while iterator.next is not None:
+                iterator = iterator.next
 
-        iterator.next = node
+            iterator.next = node
         self.__count += 1
 
 
@@ -199,7 +204,6 @@ class PersonList:
                 self.__count -= 1
             iter = iter.next
 
-
     def clear_all(self):
         self.__count = 0
         self.__head = None
@@ -207,3 +211,61 @@ class PersonList:
 
     def total_people(self):
         return self.__count
+
+
+# 2
+
+class ProjectTask:
+
+    def __init__(self):
+        pass
+
+    def __str__(self):
+        pass
+
+
+class TaskStack:
+
+    class Node:
+
+        def __init__(self, data:ProjectTask, ref=None):
+            self.data = data
+            self.ref = ref
+
+
+    def __init__(self):
+        self.__top = None
+        self.__count = 0
+
+    def is_empty(self):
+        return self.__count == 0
+
+    def count(self):
+        return self.__count
+
+    def push(self, task: ProjectTask):
+        """
+
+        :param task:
+        :return:
+        """
+        node = TaskStack.Node(task)
+
+        if not self.is_empty():
+            node.ref = self.__top
+
+        self.__top = node
+        self.__count += 1
+
+
+    def peek(self):
+        """
+
+        :return:
+        """
+
+    def pop(self):
+        """
+
+        :return:
+        """
