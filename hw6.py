@@ -217,11 +217,12 @@ class PersonList:
 
 class ProjectTask:
 
-    def __init__(self):
-        pass
+    def __init__(self, description:str, duedate:DateTime):
+        self.duedate = duedate
+        self.description = description
 
     def __str__(self):
-        pass
+        return f"{self.description}, {self.duedate}"
 
 
 class TaskStack:
@@ -245,9 +246,7 @@ class TaskStack:
 
     def push(self, task: ProjectTask):
         """
-
-        :param task:
-        :return:
+        добавляет элемент в стек(на верхушку)
         """
         node = TaskStack.Node(task)
 
@@ -260,12 +259,17 @@ class TaskStack:
 
     def peek(self):
         """
-
-        :return:
+        возвращает вершину стека
+        :return: self.__top or none 
         """
+        if self.is_empty():  return None
+        return self.__top.data
 
     def pop(self):
         """
-
-        :return:
+        удаляет элемент с вершины стека и возвращает его
+        :return: self.__top
         """
+        task = self.__top.data
+        self.__top = self.__top.def
+        return task
