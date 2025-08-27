@@ -28,10 +28,13 @@ class PrintQueue:
 
 
     def enqueue(self, document):
+        """
+        добавление элемента в конец очереди
+        """
 
         node = PrintQueue.Node(document)
 
-        if self.__count == 0:
+        if self.is_empty():
             self.__head = node
         else:
             self.__tail.prev = node
@@ -41,8 +44,11 @@ class PrintQueue:
 
 
     def dequeue(self):
+        """
+        удаляет элемент из начала очереди и возвращает его
+        """
 
-        if self.__count == 0:
+        if self.is_empty():
             return None
 
         node = self.__head
@@ -58,10 +64,8 @@ class PrintQueue:
 
     def peek(self):
 
-        if self.is_empty():
-            return None
-
-        return self.__head.document
+        if not self.is_empty():
+            return self.__head.document
 
 
     def is_empty(self):
