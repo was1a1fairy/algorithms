@@ -248,10 +248,7 @@ class TaskStack:
         """
         добавляет элемент в стек(на верхушку)
         """
-        node = TaskStack.Node(task)
-
-        if not self.is_empty():
-            node.ref = self.__top
+        node = TaskStack.Node(task, self.__top)
 
         self.__top = node
         self.__count += 1
@@ -262,8 +259,7 @@ class TaskStack:
         возвращает вершину стека
         :return: self.__top or none 
         """
-        if self.is_empty():  return None
-        return self.__top.data
+        if not self.is_empty():  return self.__top.data
 
     def pop(self):
         """
@@ -272,4 +268,5 @@ class TaskStack:
         """
         task = self.__top.data
         self.__top = self.__top.ref
+        self.__count -= 1
         return task
