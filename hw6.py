@@ -271,5 +271,5 @@ class TaskStack:
         :return: self.__top
         """
         task = self.__top.data
-        self.__top = self.__top.def
+        self.__top = self.__top.ref
         return task
