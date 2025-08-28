@@ -219,9 +219,10 @@ class PersonList:
 
 # 2
 
+
 class ProjectTask:
 
-    def __init__(self, description:str, duedate:DateTime):
+    def __init__(self, description:str, duedate:str):
         self.duedate = duedate
         self.description = description
 
@@ -234,7 +235,7 @@ class TaskStack:
     class Node:
 
         def __init__(self, data:ProjectTask, ref=None):
-            self.data = data
+            self.data = data.__str__()
             self.ref = ref
 
 
@@ -270,7 +271,8 @@ class TaskStack:
         удаляет элемент с вершины стека и возвращает его
         :return: self.__top
         """
-        task = self.__top.data
-        self.__top = self.__top.ref
-        self.__count -= 1
-        return task
+        if not self.is_empty():
+            task = self.__top.data
+            self.__top = self.__top.ref
+            self.__count -= 1
+            return task
